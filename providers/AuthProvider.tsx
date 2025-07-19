@@ -1,6 +1,7 @@
-import { createContext, useState, useEffect, useContext } from "react";
+// providers/AuthProvider.tsx
+
 import { Session } from "@supabase/supabase-js";
-import { router } from "expo-router";
+import { createContext, useContext, useEffect, useState } from "react";
 
 import { supabase } from "@/lib/supabase";
 
@@ -26,42 +27,28 @@ export default function AuthProvider(props: Props) {
   const [userName, setUserName] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchSession() {
-      const { error, data } = await supabase.auth.getSession();
+    // onAuthStateChange se encarga de todo. Se activa al cargar la app
+    // y cada vez que el estado de autenticación cambia (login, logout).
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      async (_, session) => {
+        setSession(session);
 
-      if (error) {
-        throw error;
+        // Extraemos el nombre del usuario de la sesión
+        const currentUserName = session?.user?.user_metadata?.name || null;
+        setUserName(currentUserName);
+
+        // Una vez que hemos comprobado todo, la carga ha terminado.
+        setLoading(false);
+
+        // Redirigimos al usuario a la pantalla correcta.
+        // Esto lo dejamos fuera del listener para evitar redirecciones innecesarias
       }
+    );
 
-      if (data.session) {
-        setSession(data.session);
-      } else {
-        router.replace("/signin");
-      }
-
-      setLoading(false);
-    }
-
-    fetchSession();
-
-    const { data: authListener } = supabase.auth.onAuthStateChange(async (_, session) => {
-      setSession(session);
-
-      const currentUserName = session?.user?.user_metadata?.name || null;
-      setUserName(currentUserName);
-
-      setLoading(false);
-
-      if (session) {
-        router.replace("/");
-      } else {
-        router.replace("/signin");
-      }
-    });
-
+    // Esta es la función de "limpieza" que se ejecuta cuando el componente se desmonta.
     return () => {
       authListener?.subscription.unsubscribe();
-    }
+    };
   }, []);
 
   return (

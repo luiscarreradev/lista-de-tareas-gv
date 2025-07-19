@@ -1,3 +1,6 @@
+import { Todo } from "@/types";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
+import { useQuery } from "@tanstack/react-query";
 import { useCallback, useRef, useState } from "react";
 import {
   FlatList,
@@ -7,17 +10,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { Todo } from "@/types";
-import LottieView from "lottie-react-native";
-import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import { useQuery } from "@tanstack/react-query";
 
-import Header from "@/components/Header";
 import AddTodoModal from "@/components/AddTodoModal";
-import { CustomIcon } from "@/components/ui/CustomIcon";
+import Header from "@/components/Header";
 import TodoItem from "@/components/TodoItem";
+import { CustomIcon } from "@/components/ui/CustomIcon";
 
-import todo from "@/assets/lotties/todo.json";
 import getTodos from "@/api/todos";
 
 export default function Home() {
@@ -44,7 +42,6 @@ export default function Home() {
   const renderEmptyList = useCallback(
     () => (
       <View style={styles.emptyContainer}>
-        <LottieView source={todo} style={styles.lottie} autoPlay loop={false} />
         <Text style={styles.emptyTitle}>Aún no tienes tareas</Text>
         <Text style={styles.emptyText}>
           Agrega tareas tocando el botón con el símbolo +

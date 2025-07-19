@@ -1,8 +1,8 @@
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
-import { storage } from "./storage";
 import { Todo } from "@/types";
+import { storage } from "./storage";
 
 type TodoStore = {
   todos: Todo[],

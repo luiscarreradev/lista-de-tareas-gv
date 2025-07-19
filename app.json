@@ -5,9 +5,17 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo-guatemala-visible.png",
+    "splash": {
+      "image": "./assets/images/logo-guatemala-visible.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
     "ios": {
       "supportsTablet": true
     },
@@ -15,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.luiscarrera.tasklistprojectgv"
     },
     "web": {
       "bundler": "metro",
@@ -33,6 +42,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c5336946-2841-4799-a74a-95682c2df880"
+      }
     }
   }
 }

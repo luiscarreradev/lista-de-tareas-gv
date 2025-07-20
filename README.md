@@ -4,6 +4,13 @@ Esta es una aplicación móvil para gestionar una lista de tareas personales, de
 
 El proyecto cumple con todos los requisitos solicitados: permite a los usuarios registrarse, iniciar sesión de forma segura y administrar sus propias tareas, garantizando que la información de cada persona sea privada.
 
+
+**QR para descargar el APK en Expo**
+
+![Estructura de la tabla 'tareas' en Supabase](assets/images/qr.png)
+
+También se incluye el [APK](task-list-gv.apk) en este repositorio y el [Link del descargable en Expo](https://youtu.be/HtjMB1igO90).
+
 ---
 
 ## Demostración Visual

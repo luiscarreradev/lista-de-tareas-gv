@@ -1,4 +1,4 @@
-# Aplicación de Tareas - Prueba Técnica para Guatemala Visible
+# Aplicación de Tareas - Guatemala Visible
 
 Esta es una aplicación móvil para gestionar una lista de tareas personales, desarrollada como parte del proceso de selección para Guatemala Visible.
 
